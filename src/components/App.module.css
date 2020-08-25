@@ -1,0 +1,64 @@
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+.Header_Container{
+    margin-top: 10px;
+}
+
+.Paginnation_Wrapper {
+    width: 100%;
+    text-align: center;
+}
+.Table_Container{
+    width: 100%;
+}
+.Preloader_Container{
+    width: 90vw;
+    text-align: center;
+}
+.preloader{
+   
+    width: 200px;
+    height: 200px;
+    
+}
+
+table {
+    margin:0 auto;
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+tr,
+td {
+    border: 1px solid grey;
+    text-align: center;
+}
+
+.Pagination_Container {
+    cursor: pointer;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border: 1px solid black;
+    margin-left: 5px;
+}
+
+.Pagination_Container_Selected {
+    cursor: pointer;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border: 2px solid crimson;
+    margin-left: 5px;
+}
+
+.Pagintaion {
+    text-align: center;
+    font-size: 10px;
+}
+.notify{
+    margin-top: 100px;
+    text-align: center;
+}
