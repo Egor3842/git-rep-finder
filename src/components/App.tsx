@@ -66,5 +66,5 @@ const MapStateToProps = (state: AppStateType): MapStateToPropsType => ({
   isStartedUsing: state.Reducer.isStartedUsing
 })
 
-export default connect(MapStateToProps,
+export default connect  (MapStateToProps,
   { ShowAmountOfRep, setCurrentFinderName, ShowCurrentRep, setCurrentPage,StartAction })(App);

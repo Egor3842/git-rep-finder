@@ -21,16 +21,8 @@ const initialState: initialStateType = {
   isStartedUsing:false
 };
 
-type ActionType = {
-  type: string
-  amountOfRepos: number
-  isFetching: boolean
-  findGitName: string
-  repositoryInfo: []
-  currentPage: number
-  isError: boolean
-  isStartedUsing:boolean
-}
+type ActionType = requestFetchingType | FindErrorType | requestRepAmountSuccessType| requestRepInfoSuccessType | 
+setCurrentFinderNameType | setCurrentPageType | ShowAmountOfRepType | ShowCurrentRepType | StartActionType
 
 const Reducer = (state = initialState, action: ActionType): initialStateType => {
   switch (action.type) {
@@ -71,45 +63,75 @@ const REP_AMOUNT = 'REP_AMOUNT';
 const CURRENT_REP = 'CURRENT_REP';
 const STARTED = 'STARTED'
 
-type ActionTypeType = {
-  type: string
-  isFetching?: boolean
-  isError?: boolean
-  findGitName?: string
-  currentPage?: number
-  amountOfRepos?: number
-  repositoryInfo?: []
-  isStartedUsing?:boolean
-
+type requestFetchingType = {
+  type: typeof SET_FETCHING
+  isFetching: boolean
 }
-
-const requestFetching = (isFetching: boolean): ActionTypeType => {
+const requestFetching = (isFetching: boolean): requestFetchingType => {
   return { type: SET_FETCHING, isFetching }
 };
-const FindError = (isError: boolean): ActionTypeType => {
+type FindErrorType = {
+  type: typeof ERROR_REP
+  isError: boolean
+};
+const FindError = (isError: boolean): FindErrorType => {
   return { type: ERROR_REP, isError }
-}
-const requestRepAmountSuccess = (amountOfRepos: number): ActionTypeType => {
+};
+
+type requestRepAmountSuccessType = {
+  type: typeof REQUESTED_AMOUNT_OF_SUCCEEDED
+  amountOfRepos: number
+};
+const requestRepAmountSuccess = (amountOfRepos: number): requestRepAmountSuccessType => {
   return { type: REQUESTED_AMOUNT_OF_SUCCEEDED, amountOfRepos }
 };
-const requestRepInfoSuccess = (repositoryInfo: []): ActionTypeType => {
+
+type requestRepInfoSuccessType = {
+  type: typeof REQUESTED_INFO_OF_REP_SUCCEEDED
+  repositoryInfo:[]
+};
+const requestRepInfoSuccess = (repositoryInfo: []): requestRepInfoSuccessType => {
   return { type: REQUESTED_INFO_OF_REP_SUCCEEDED, repositoryInfo }
 };
-export const setCurrentFinderName = (findGitName: string): ActionTypeType => {
-  return { type: SET_FINDED_REP, findGitName }
-}
-export const setCurrentPage = (currentPage: number): ActionTypeType => {
-  return { type: SET_CURRENT_PAGE, currentPage }
-}
 
-export const ShowAmountOfRep = (findGitName: string): ActionTypeType => {
+type setCurrentFinderNameType = {
+  type: typeof SET_FINDED_REP
+  findGitName:string
+};
+export const setCurrentFinderName = (findGitName: string): setCurrentFinderNameType => {
+  return { type: SET_FINDED_REP, findGitName }
+};
+
+type setCurrentPageType = {
+  type:typeof SET_CURRENT_PAGE
+  currentPage:number
+};
+export const setCurrentPage = (currentPage: number): setCurrentPageType => {
+  return { type: SET_CURRENT_PAGE, currentPage}
+};
+
+type ShowAmountOfRepType = {
+  type: typeof REP_AMOUNT
+  findGitName:string
+};
+export const ShowAmountOfRep = (findGitName: string): ShowAmountOfRepType => {
   return { type: REP_AMOUNT, findGitName }
 };
-export const ShowCurrentRep = (findGitName: string, currentPage: number): ActionTypeType => {
+
+type ShowCurrentRepType = {
+  type: typeof CURRENT_REP
+  findGitName:string
+  currentPage: number
+};
+export const ShowCurrentRep = (findGitName: string, currentPage: number): ShowCurrentRepType => {
   return { type: CURRENT_REP, findGitName, currentPage }
 };
 
-export const StartAction = (isStartedUsing:boolean):ActionTypeType =>{
+type StartActionType = {
+  type:typeof STARTED
+  isStartedUsing:boolean
+}
+export const StartAction = (isStartedUsing:boolean):StartActionType =>{
   return {type:STARTED, isStartedUsing}
 }
 
