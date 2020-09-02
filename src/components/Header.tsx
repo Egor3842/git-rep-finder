@@ -1,5 +1,7 @@
 import React from 'react';
 import s from './App.module.css';
+import SearchInput from './SearchInput';
+import OnSubmitButton from './OnSubmitButton';
 
 type PropsType = {
           setCurrentFinderName:(findGitName:string)=>void
@@ -11,19 +13,22 @@ type PropsType = {
 }
 
 const Header: React.FC<PropsType> = (props)=>{
-    const setFinderName = (e: any) => {
-        props.setCurrentFinderName(e.currentTarget.value);
-      };
-      const ShowInfoAbout = (findGitName: string, currentPage: number) => {
-        props.StartAction(true);
-        props.ShowAmountOfRep(findGitName);
-        props.ShowCurrentRep(findGitName, currentPage);
-      };
+    
+      
     
     return (
         <div className = {s.Header_Container}>
-        <input value={props.findGitName} placeholder = 'Найти...' onChange={setFinderName}></input>
-        <button onClick={() => ShowInfoAbout(props.findGitName, props.currentPage)}>Найти</button>
+
+        <SearchInput findName = {props.findGitName}
+                      setCurrentFinderName = {props.setCurrentFinderName}
+                      placeholder = 'Найти...' />
+
+        <OnSubmitButton 
+        findName = {props.findGitName} 
+        currentPage = {props.currentPage}
+        StartAction = {props.StartAction}
+        ShowAmountOfRep = {props.ShowAmountOfRep}
+        ShowCurrentRep = {props.ShowCurrentRep}/>
         </div>
     )
 }

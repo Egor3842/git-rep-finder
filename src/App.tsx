@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './App.module.css';
+import s from './components/App.module.css';
 import { connect } from 'react-redux';
 import {
   ShowAmountOfRep,
@@ -7,12 +7,12 @@ import {
   ShowCurrentRep,
   setCurrentPage,
   StartAction
-} from '../redux/Reducer'
-import Preloader from '../Preloader/Preloader';
-import MainBody from './MainBody';
-import Header from './Header';
-import Notification from './Notification';
-import { AppStateType } from '../redux/redux';
+} from './redux/ActionCreators'
+import Preloader from './components/Preloader';
+import MainBody from './components/MainBody';
+import Header from './components/Header';
+import Notification from './components/Notification';
+import { AppStateType } from './redux/redux';
 
 type MapStateToPropsType = {
   amountOfRepos: number
@@ -22,6 +22,7 @@ type MapStateToPropsType = {
   isError: boolean
   isFetching: boolean
   isStartedUsing:boolean
+  reposHead:string[]
 }
 type MapDispatchToProps = {
   setCurrentFinderName: (findGitName: string) => void
@@ -51,7 +52,8 @@ const App: React.FC<MapStateToPropsType & MapDispatchToProps> = (props) => {
               ShowCurrentRep={props.ShowCurrentRep}
               findGitName={props.findGitName}
               currentPage={props.currentPage}
-              repositoryInfo={props.repositoryInfo} />
+              repositoryInfo={props.repositoryInfo}
+              reposHead = {props.reposHead} />
       }
     </div>
   );
@@ -63,7 +65,8 @@ const MapStateToProps = (state: AppStateType): MapStateToPropsType => ({
   repositoryInfo: state.Reducer.repositoryInfo,
   currentPage: state.Reducer.currentPage,
   isError: state.Reducer.isError,
-  isStartedUsing: state.Reducer.isStartedUsing
+  isStartedUsing: state.Reducer.isStartedUsing,
+  reposHead:state.Reducer.reposHead
 })
 
 export default connect  (MapStateToProps,

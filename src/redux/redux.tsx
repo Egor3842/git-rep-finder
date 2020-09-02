@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import Reducer, { RequestAxios } from './Reducer'
+import Reducer from './Reducer'
+import {RequestAxios} from './Saga'
 
 const sagaMiddleware = createSagaMiddleware()
 

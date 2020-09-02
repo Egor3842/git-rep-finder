@@ -1,5 +1,7 @@
 import React from 'react';
 import s from './App.module.css';
+import TitleComponent from './TitleComponent';
+import AllRepos from './AllRepos';
 
 type PropsType = {
     amountOfRepos:number
@@ -8,6 +10,7 @@ type PropsType = {
     findGitName:string
     currentPage:number
     repositoryInfo:[]
+    reposHead:string[]
 }
 
 const MainBody: React.FC<PropsType> = (props) =>{
@@ -24,28 +27,11 @@ const MainBody: React.FC<PropsType> = (props) =>{
       
     return(
         <div>
-        <div>Общее количество репозиториев:{props.amountOfRepos}</div>
+        <TitleComponent amountOfRepos = {props.amountOfRepos}
+                        title = {'Общее количество репозиториев:'}/>
         <div className = {s.Table_Container}>
-        <table>
-          <thead>
-            <tr>
-              <td>Название репозитория</td>
-              <td>URL резопизория</td>
-              <td>Количество форков и просмотров</td>
-              <td>Количество звезд</td>
-            </tr>
-          </thead>
-          <tbody>
-            {props.repositoryInfo.map((x: any) =>
-              <tr>
-                <td>{x.name}</td>
-                <td><a href={x.html_url}>{x.html_url}</a></td>
-                <td><div>Форки: {x.forks}<br/>Просмотры: {x.watchers}</div></td>
-                <td><div>{x.stargazers_count}</div></td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+          <AllRepos repositoryInfo = {props.repositoryInfo}
+                    reposHead = {props.reposHead}/>
         </div>
         <div className={s.Paginnation_Wrapper}>
           {PagesArray.map(x =>
