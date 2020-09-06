@@ -36,8 +36,8 @@ import { requestFetchingType, FindErrorType, requestRepAmountSuccessType, reques
   };
   
   
-  export const ShowCurrentRep = (findGitName: string, currentPage: number): ShowCurrentRepType => {
-    return { type: CURRENT_REP, findGitName, currentPage }
+  export const ShowCurrentRep = (findGitName: string,countOfRepInPage:number, currentPage: number): ShowCurrentRepType => {
+    return { type: CURRENT_REP, findGitName,countOfRepInPage, currentPage }
   };
   
   

@@ -5,7 +5,7 @@ type PropsType = {
     title:string
 }
 
-const TitleComponent:React.FC<PropsType> = (props:any) => {
+const TitleComponent:React.FC<PropsType> = (props) => {
     return (
             <div>{props.title}{props.amountOfRepos}</div>
     )

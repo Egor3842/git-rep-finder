@@ -14,8 +14,8 @@
     width: 100%;
 }
 .Preloader_Container{
-    width: 90vw;
-    text-align: center;
+    width: 200px;
+   margin:0 auto
 }
 .preloader{
    

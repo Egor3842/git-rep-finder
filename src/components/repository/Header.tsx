@@ -1,15 +1,16 @@
 import React from 'react';
-import s from './App.module.css';
-import SearchInput from './SearchInput';
-import OnSubmitButton from './OnSubmitButton';
+import s from '../../assets/styles/App.module.css';
+import SearchInput from '../core/SearchInput';
+import OnSubmitButton from '../core/OnSubmitButton';
 
 type PropsType = {
           setCurrentFinderName:(findGitName:string)=>void
           ShowAmountOfRep:(findGitName:string)=>void
-          ShowCurrentRep:(findGitName:string, currentPage:number)=>void
+          ShowCurrentRep:(findGitName:string,countOfRepInPage:number, currentPage:number)=>void
           StartAction:(isStarted:boolean)=>void
           findGitName:string
           currentPage:number
+          countOfRepInPage:number
 }
 
 const Header: React.FC<PropsType> = (props)=>{
@@ -25,9 +26,9 @@ const Header: React.FC<PropsType> = (props)=>{
 
         <OnSubmitButton 
         findName = {props.findGitName} 
-        currentPage = {props.currentPage}
         StartAction = {props.StartAction}
         ShowAmountOfRep = {props.ShowAmountOfRep}
+        countOfRepInPage = {props.countOfRepInPage}
         ShowCurrentRep = {props.ShowCurrentRep}/>
         </div>
     )

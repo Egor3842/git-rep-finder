@@ -31,6 +31,7 @@ export type ShowAmountOfRepType = {
 export type ShowCurrentRepType = {
     type: typeof CURRENT_REP
     findGitName:string
+    countOfRepInPage:number
     currentPage: number
   };
 export type StartActionType = {

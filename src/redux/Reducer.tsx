@@ -9,7 +9,8 @@ type initialStateType = {
   isFetching: boolean,
   isError: boolean,
   isStartedUsing:boolean,
-  reposHead:string[]
+  reposHead:string[],
+  countOfRepInPage:number
 }
 
 const initialState: initialStateType = {
@@ -20,7 +21,8 @@ const initialState: initialStateType = {
   isFetching: false,
   isError: false,
   isStartedUsing:false,
-  reposHead: ['Название репозитория','URL резопизория','Количество форков и просмотров','Количество звезд']
+  reposHead: ['Название репозитория','URL резопизория','Количество форков и просмотров','Количество звезд'],
+  countOfRepInPage:10
 };
 
 

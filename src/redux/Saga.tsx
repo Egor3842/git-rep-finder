@@ -1,5 +1,5 @@
 import { put, call, takeEvery } from 'redux-saga/effects';
-import { MainApi } from '../API/MainApi';
+import { GitApi } from '../API/GitApi';
 import { setCurrentPage, requestRepAmountSuccess, FindError, requestFetching, requestRepInfoSuccess } from './ActionCreators';
 import { REP_AMOUNT, CURRENT_REP } from './Constants';
 
@@ -10,7 +10,7 @@ type GetInfoRepAmountAsyncType = {
   function* GetInfoRepAmountAsync(action: GetInfoRepAmountAsyncType) {
     try {
       yield put(setCurrentPage(1))
-      const data = yield call(MainApi.takeAmountofRep, action.findGitName);
+      const data = yield call(GitApi.takeAmountofRep, action.findGitName);
       yield put(requestRepAmountSuccess(data.public_repos));
     } catch (error) {
       yield put(FindError(true));
@@ -20,13 +20,14 @@ type GetInfoRepAmountAsyncType = {
   type GetRepositoriesInfoAsyncType = {
     type: string
     findGitName: string
+    countOfRepInPage:number
     currentPage: number
   }
   function* GetRepositoriesInfoAsync(action: GetRepositoriesInfoAsyncType) {
     try {
       yield put(requestFetching(true));
       yield put(FindError(false));
-      const data = yield call(MainApi.takeRepInfo, action.findGitName, action.currentPage);
+      const data = yield call(GitApi.takeRepInfo, action.findGitName,action.countOfRepInPage, action.currentPage);
       yield put(requestRepInfoSuccess(data));
       yield put(requestFetching(false));
     } catch (error) {
